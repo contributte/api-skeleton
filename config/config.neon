@@ -1,0 +1,46 @@
+# ======================================
+# Config ===============================
+php:
+	date.timezone: Europe/Prague
+	# session.save_path: %tempDir%/session
+
+# ======================================
+# Extension ============================
+extensions:
+	api: Contributte\Api\DI\ApiExtension
+
+api:
+	middlewares:
+		# Catch & handler errors
+		- Contributte\Api\Middleware\TracyMiddleware(%debugMode%)
+		# Format responses
+		- Contributte\Api\Middleware\NegotiationMiddleware(
+			Contributte\Api\Formatter\MultiFormatter([
+				Contributte\Api\Formatter\JsonFormatter()
+			])
+		)
+		# Process authentication & authorization
+		- Contributte\Api\Middleware\MatchMiddleware(
+			# skip public routes
+			skipTags: [public]
+			# apply firewall middleware
+			middlewares: [
+				Contributte\Api\Middleware\FirewallMiddleware(
+					Contributte\Api\Security\StaticFirewall([
+						foobar: [user: Foo, role: Bar]
+					])
+				)
+			]
+		)
+		# Process controllers
+		- Contributte\Api\Middleware\DispatcherMiddleware
+
+search:
+	controllers:
+		in: %appDir%/Api
+		files: [*Controller.php]
+
+# ======================================
+# Services =============================
+services:
+	routing.router: App\Domain\Routing\RouterFactory::create

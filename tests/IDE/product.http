@@ -1,0 +1,21 @@
+### /api/v1/product
+GET http://0.0.0.0:8000/api/v1/product
+X-Api-Key: foobar
+
+> {%
+	client.assert(response.status === 200);
+%}
+
+### /api/v1/product
+POST http://0.0.0.0:8000/api/v1/product
+X-Api-Key: foobar
+
+{
+    "uuid": "11111111-1111-1111-1111-111111111111",
+    "name": "Test product"
+}
+
+### /api/v1/product/{uuid}
+GET http://0.0.0.0:8000/api/v1/product/1212
+X-Api-Key: foobar
+

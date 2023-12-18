@@ -1,0 +1,6 @@
+### /api/_/apidoc
+GET http://0.0.0.0:8000/api/_/apidoc
+
+> {%
+	client.assert(response.status === 200);
+%}

@@ -1,0 +1,6 @@
+### /api/_/ping
+GET http://0.0.0.0:8000/api/_/ping
+
+> {%
+	client.assert(response.status === 200);
+%}

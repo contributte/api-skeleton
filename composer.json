@@ -1,0 +1,44 @@
+{
+  "name": "contributte/api-skeleton",
+  "description": "API project skeleton based on Nette Framework (@nette) and Contributte (@contributte) libraries by @f3l1x",
+  "keywords": [
+    "nette",
+    "skeleton",
+    "project",
+    "api",
+    "rest",
+    "json"
+  ],
+  "license": "MIT",
+  "type": "project",
+  "require": {
+    "php": ">=8.1",
+    "contributte/nella": "^0.2",
+    "contributte/api": "^0.5"
+  },
+  "require-dev": {
+    "contributte/qa": "^0.3",
+    "contributte/dev": "^0.4",
+    "contributte/tester": "^0.3",
+    "contributte/phpstan": "^0.1"
+  },
+  "autoload": {
+    "psr-4": {
+      "App\\": "app"
+    }
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "Tests\\": "tests"
+    }
+  },
+  "prefer-stable": true,
+  "minimum-stability": "dev",
+  "config": {
+    "sort-packages": true,
+    "allow-plugins": {
+      "dealerdirect/phpcodesniffer-composer-installer": true,
+      "php-http/discovery": true
+    }
+  }
+}
