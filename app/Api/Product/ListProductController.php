@@ -25,16 +25,22 @@ final class ListProductController extends JsonController
 	public function __invoke(ApiRequest $request): ResponseInterface
 	{
 		try {
-			$product = [
-				'id' => 1,
-				'name' => 'Test',
+			$products = [
+				[
+					'id' => 1,
+					'name' => 'Test1',
+				],
+				[
+					'id' => 2,
+					'name' => 'Test2',
+				],
 			];
 
-			return GetProductResponse::of($product);
+			return ListProductResponse::of($products);
 		} catch (Throwable $e) {
 			return ErrorResponse::create()
 				->withStatusCode(400)
-				->withMessage('Cannot load detail');
+				->withMessage('Cannot load list of products');
 		}
 	}
 

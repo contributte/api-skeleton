@@ -8,12 +8,12 @@ class ListProductResponse extends EntityResponse
 {
 
 	/**
-	 * @param array<string, scalar> $detail
+	 * @param array<array<mixed>> $products
 	 */
-	public static function of(array $detail): self
+	public static function of(array $products): self
 	{
 		$self = self::create();
-		$self->payload = $detail;
+		$self->payload = $products;
 
 		return $self;
 	}
